@@ -28,10 +28,21 @@ router.get('/:id', (req, res) => { // colon is a dynamic placeholder, what you'r
     sql.query(query, (err, result) => {
         if (err) { throw err; console.log(err); }
 
+        
         console.log(result); // should see objects wrapped in an array
 
-        // render the home view with dynamic data
-        //res.render('home', { people: result }); // home = handing back data that comes through
+        // turn our social property into an array - it's just text in the DB
+        // which isn't really anything we can work with
+        result[0].social = result[0].social.split(",").map(function(item) {
+            item = item.trim(); // remove the extra spaces from each word
+
+            return item; // converting array into 3 pieces of text to loop through
+        });
+
+        //console.log('after split:', result[0]);
+
+        // send the DB query back to the browser
+        res.json(result);
     })
 }) 
 
