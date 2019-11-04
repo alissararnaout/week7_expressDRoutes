@@ -19,7 +19,7 @@ router.get('/', (req, res) => { // req = making request, res = getting response
     })
 })
 // localhost:3000/anything
-router.get('users/:id', (req, res) => { // colon is a dynamic placeholder, what you're passing through will come after
+router.get('/users/:id', (req, res) => { // colon is a dynamic placeholder, what you're passing through will come after
     console.log('hit a dynamic route');
     console.log(req.params.id);
    
