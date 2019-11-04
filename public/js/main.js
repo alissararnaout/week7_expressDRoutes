@@ -36,7 +36,7 @@ function parseUserData(person) { // person is the database result
     
         let imgSrc = this.previousElementSibling.getAttribute('src'); // find the image closest to the anchor tag and get its src property
 
-        let url = `/${this.getAttribute('href')}`;
+        let url = `/users/${this.getAttribute('href')}`;
 
         fetch(url) // go get the data  //this statemenet will change the route, the express file will react
             .then(res => res.json()) // parse the json result into a plain object
